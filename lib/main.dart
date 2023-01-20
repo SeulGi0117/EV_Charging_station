@@ -1,3 +1,5 @@
+import 'package:ev_charging/home.dart';
+import 'package:ev_charging/provider/ev_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         // ChangeNotifierProvider 통해 변화에 대해 구독
         providers : [
           ChangeNotifierProvider(
-            create: (BuildContext context) => EVProvider())
+            create: (BuildContext context) => EvProvider())
         ],
         child: Home() // home.dart
       ),

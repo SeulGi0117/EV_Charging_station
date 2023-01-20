@@ -15,6 +15,14 @@ class EvRepository {
 
     final response = await http.get(Uri.parse(baseUrl));
 
+    // final body1 = convert.utf8.decode(response.bodyBytes);
+
+    // final xml1 = Xml2Json()..parse(body1);
+    // final json1 = xml1.toParker();
+
+    // print("1----------------");
+    // print(body1);
+
     // 정상적으로 데이터를 불러왔다면
     if (response.statusCode == 200) {
       // 데이터 가져오기
@@ -29,7 +37,7 @@ class EvRepository {
       final jsonEv = jsonResult['response']['body']['items'];
 
       //필요한 데이터 그룹이 있다면
-      if(jsonEv['item'] != null) {
+      if (jsonEv['item'] != null) {
         // map를 통해 데이터를 전달하기 위해 객체인 List=로 만든다.
         List<dynamic> list = jsonEv['item'];
 

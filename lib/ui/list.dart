@@ -6,29 +6,30 @@ import 'package:ev_charging/provider/ev_provider.dart';
 class ListWidget extends StatelessWidget {
   ListWidget({super.key});
 
-  late EvProvider _evProvider;  // EvProvider 호출
+  late EvProvider _evProvider; // EvProvider 호출
 
   Widget _makeEvOne(Ev ev) {
-    return Row(children: [
-      Expanded: (
-        child: Padding(
+    return Row(
+      children: [
+        Expanded(
+            child: Padding(
           padding: EdgeInsets.all(15.0),
           child: Column(
-            CrossAxisAlignment : CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // 충전소 주소
               Text(
                 ev.addr.toString(),
-                style: TextStyle(FontWeight: FontWeight.bold, fontSize: 18),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(
-                height : 10,
+                height: 10,
               ),
 
               // 충전기 타입
               Text(
                 ev.chargeTp.toString(),
-                style : TextStyle(fontweight: FontWeight.bold, fontSize: 13),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
               ),
               SizedBox(
                 height: 10,
@@ -43,7 +44,7 @@ class ListWidget extends StatelessWidget {
                 height: 10,
               ),
 
-               // 충전기 상태 코드
+              // 충전기 상태 코드
               Text(
                 ev.cpStat.toString(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -87,7 +88,7 @@ class ListWidget extends StatelessWidget {
             ],
           ),
         ))
-    ],
+      ],
     );
   }
 
@@ -98,7 +99,7 @@ class ListWidget extends StatelessWidget {
       itemCount: evs.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          height: 300, color: Colors.white, child: _makeEvOne(evs[index]));
+            height: 300, color: Colors.white, child: _makeEvOne(evs[index]));
       },
       separatorBuilder: (BuildContext context, int index) {
         return Divider();
@@ -117,9 +118,9 @@ class ListWidget extends StatelessWidget {
         title: Text("Ev Provider"),
       ),
       // Consumer를 통해 데잍러 접근
-      body: Consumer <EvProvider>(builder: (context, provider, wideget) {
+      body: Consumer<EvProvider>(builder: (context, provider, wideget) {
         // 데이터가 있으면 _makeListView에 데이터를 전달
-        if (provider. evs != null && provider.evs.length > 0) {
+        if (provider.evs != null && provider.evs.length > 0) {
           return _makeListView(provider.evs);
         }
 
@@ -129,6 +130,5 @@ class ListWidget extends StatelessWidget {
         );
       }),
     );
-
   }
 }
